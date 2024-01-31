@@ -1,5 +1,4 @@
-﻿using FrooxEngine;
-using HarmonyLib;
+﻿using HarmonyLib;
 using MonkeyLoader.Meta;
 using MonkeyLoader.Patching;
 using System;

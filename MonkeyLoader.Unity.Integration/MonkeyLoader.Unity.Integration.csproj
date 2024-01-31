@@ -1,21 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
+    <Version>0.3.0-beta</Version>
     <AssemblyTitle>MonkeyLoader.Unity.Integration</AssemblyTitle>
     <AssemblyFileName>$(AssemblyTitle).dll</AssemblyFileName>
     <RootNamespace>MonkeyLoader.Unity</RootNamespace>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <Target Name="PackProject" AfterTargets="PostBuildEvent">
-    <MSBuild
-      Projects="$(MSBuildProjectFile)"
-      Properties="NuPkgName=MonkeyLoader.GamePacks.Unity"
-      Targets="PackNugetPkg">
+    <MSBuild Projects="$(MSBuildProjectFile)" Properties="NuPkgName=MonkeyLoader.GamePacks.Unity" Targets="PackNugetPkg">
     </MSBuild>
   </Target>
   
   <ItemGroup>
+    <PackageReference Include="MonkeyLoader" Version="0.3.0-beta" />
     <PackageReference Include="PolySharp" Version="1.14.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
