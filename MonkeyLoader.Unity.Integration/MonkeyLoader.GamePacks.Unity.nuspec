@@ -22,7 +22,7 @@
       src="bin\Release\net472\MonkeyLoader.Unity.Integration.xml"
       target="lib\net462\MonkeyLoader.Unity.Integration.xml" />
     <file
-      src="bin\Release\net472\MonkeyLoader.Unity.Integration.dll.mdb"
-      target="lib\net462\MonkeyLoader.Unity.Integration.dll.mdb" />
+      src="bin\Release\net472\MonkeyLoader.Unity.Integration.dll.pdb"
+      target="lib\net462\MonkeyLoader.Unity.Integration.dll.pdb" />
   </files>
 </package>

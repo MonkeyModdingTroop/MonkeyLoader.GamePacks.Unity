@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CEAAAF5F-3B06-40E0-B0D2-3BBD3513038B}"
+	ProjectSection(SolutionItems) = preProject
+		MonkeyLoader.GamePacks.Resonite.Debug.nuspec = MonkeyLoader.GamePacks.Resonite.Debug.nuspec
+		MonkeyLoader.GamePacks.Resonite.nuspec = MonkeyLoader.GamePacks.Resonite.nuspec
+		MonkeyLoader.GamePacks.Unity.Debug.nuspec = MonkeyLoader.GamePacks.Unity.Debug.nuspec
+		MonkeyLoader.GamePacks.Unity.nuspec = MonkeyLoader.GamePacks.Unity.nuspec
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonkeyLoader.Unity.Integration", "MonkeyLoader.Unity.Integration\MonkeyLoader.Unity.Integration.csproj", "{9417BAC1-7886-418B-85AC-619F904B4DF5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9417BAC1-7886-418B-85AC-619F904B4DF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9417BAC1-7886-418B-85AC-619F904B4DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9417BAC1-7886-418B-85AC-619F904B4DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9417BAC1-7886-418B-85AC-619F904B4DF5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D505B2E-FBA2-4F50-BC1C-838BC8DF0D5C}
+	EndGlobalSection
+EndGlobal
