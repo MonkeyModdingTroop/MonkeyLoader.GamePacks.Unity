@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>MonkeyLoader.GamePacks.Unity</id>
-    <version>0.3.0-beta</version>
+    <version>0.4.0-beta</version>
     <title>Unity GamePack</title>
     <authors>Banane9</authors>
     <owners>Banane9</owners>
@@ -17,10 +17,10 @@
     <projectUrl>https://github.com/MonkeyModdingTroop/MonkeyLoader.GamePacks.Unity</projectUrl>
     <repository type="git" url="https://github.com/MonkeyModdingTroop/MonkeyLoader.GamePacks.Unity.git" />
     <tags>mod mods modding mod loader harmony unity game games mono config configuration nuget logging monkeyloader</tags>
-    
+
     <dependencies>
       <group targetFramework=".NETFramework4.6.2">
-        <dependency id="MonkeyLoader" version="0.3.0-beta" />
+        <dependency id="MonkeyLoader" version="0.4.0-beta" />
       </group>
     </dependencies>
   </metadata>
@@ -29,7 +29,7 @@
     <file
       src="..\README.md"
       target="README.md" />
-      
+
     <file
       src="bin\Debug\net472\MonkeyLoader.Unity.Integration.dll"
       target="lib\net462\MonkeyLoader.Unity.Integration.dll" />
