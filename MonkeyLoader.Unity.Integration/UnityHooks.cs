@@ -15,8 +15,19 @@ namespace MonkeyLoader.Unity
     {
         public override string Name { get; } = "Unity Hooks";
 
-        private static IEnumerable<IUnityMonkeyInternal> UnityMonkeys
-            => Mod.Loader.Monkeys.SelectCastable<IMonkey, IUnityMonkeyInternal>();
+        private static IUnityMonkeyInternal[] UnityMonkeys
+        {
+            get
+            {
+                var monkeys = Mod.Loader.Monkeys
+                    .SelectCastable<IMonkey, IUnityMonkeyInternal>()
+                    .ToArray();
+
+                Array.Sort(monkeys, Monkey.AscendingComparer);
+
+                return monkeys;
+            }
+        }
 
         protected override IEnumerable<IFeaturePatch> GetFeaturePatches() => Enumerable.Empty<IFeaturePatch>();
 
@@ -32,14 +43,14 @@ namespace MonkeyLoader.Unity
         {
             Info(() => "First Scene Loaded! Executing OnFirstSceneReady hooks on UnityMonkeys!");
 
-            var unityMonkeys = UnityMonkeys.ToArray();
+            var unityMonkeys = UnityMonkeys;
             Logger.Trace(() => "Running FirstSceneReady hooks in this order:");
             Logger.Trace(unityMonkeys.Select(uM => new Func<object>(() => $"{uM.Mod.Title}/{uM.Name}")));
 
             SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
             var sw = Stopwatch.StartNew();
 
-            foreach (var unityMonkey in UnityMonkeys)
+            foreach (var unityMonkey in unityMonkeys)
                 unityMonkey.FirstSceneReady(scene);
 
             Info(() => $"Done executing OnFirstSceneReady hooks on UnityMonkeys in {sw.ElapsedMilliseconds}ms!");
