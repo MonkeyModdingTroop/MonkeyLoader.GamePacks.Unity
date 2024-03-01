@@ -13,17 +13,14 @@ namespace MonkeyLoader.Unity
 {
     internal sealed class UnityHooks : Monkey<UnityHooks>
     {
-        public override string Name { get; } = "Unity Hooks";
-
         private static IUnityMonkeyInternal[] UnityMonkeys
         {
             get
             {
-                var monkeys = Mod.Loader.Monkeys
+                var monkeys = Mod.Loader.Mods
+                    .GetMonkeysAscending()
                     .SelectCastable<IMonkey, IUnityMonkeyInternal>()
                     .ToArray();
-
-                Array.Sort(monkeys, Monkey.AscendingComparer);
 
                 return monkeys;
             }
