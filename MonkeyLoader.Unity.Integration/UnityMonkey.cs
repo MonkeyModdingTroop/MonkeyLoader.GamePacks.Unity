@@ -57,7 +57,7 @@ namespace MonkeyLoader.Unity
         {
             if (Failed)
             {
-                Warn(() => "Monkey already failed Run, skipping OnFirstSceneReady!");
+                Logger.Warn(() => "Monkey already failed Run, skipping OnFirstSceneReady!");
                 return false;
             }
 
@@ -65,20 +65,20 @@ namespace MonkeyLoader.Unity
                 throw new InvalidOperationException("A Unity monkey's OnFirstSceneReady() method must only be called once!");
 
             FirstSceneReadyRan = true;
-            Debug(() => "Running OnFirstSceneReady");
+            Logger.Debug(() => "Running OnFirstSceneReady");
 
             try
             {
                 if (!OnFirstSceneReady(scene))
                 {
                     FirstSceneReadyFailed = true;
-                    Warn(() => "OnFirstSceneReady failed!");
+                    Logger.Warn(() => "OnFirstSceneReady failed!");
                 }
             }
             catch (Exception ex)
             {
                 FirstSceneReadyFailed = true;
-                Error(() => ex.Format("OnFirstSceneReady threw an Exception:"));
+                Logger.Error(() => ex.Format("OnFirstSceneReady threw an Exception:"));
             }
 
             return !FirstSceneReadyFailed;

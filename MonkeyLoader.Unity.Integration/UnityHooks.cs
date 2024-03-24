@@ -13,44 +13,52 @@ namespace MonkeyLoader.Unity
 {
     internal sealed class UnityHooks : Monkey<UnityHooks>
     {
-        private static IUnityMonkeyInternal[] UnityMonkeys
-        {
-            get
-            {
-                var monkeys = Mod.Loader.Mods
-                    .GetMonkeysAscending()
-                    .SelectCastable<IMonkey, IUnityMonkeyInternal>()
-                    .ToArray();
-
-                return monkeys;
-            }
-        }
+        private Scene _firstScene;
 
         protected override IEnumerable<IFeaturePatch> GetFeaturePatches() => Enumerable.Empty<IFeaturePatch>();
 
         protected override bool OnLoaded()
         {
-            SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+            SceneManager.sceneLoaded += OnFirstSceneReady;
             Application.quitting += () => Mod.Loader.Shutdown();
 
             return true;
         }
 
-        private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode sceneMode)
+        private void LateRunFirstSceneReady(MonkeyLoader loader, IEnumerable<Mod> mods)
         {
-            Info(() => "First Scene Loaded! Executing OnFirstSceneReady hooks on UnityMonkeys!");
+            Logger.Info(() => "New mods were loaded! Executing OnFirstSceneReady hooks on UnityMonkeys!");
 
-            var unityMonkeys = UnityMonkeys;
+            RunFirstSceneReadyHooks(mods);
+        }
+
+        private void OnFirstSceneReady(Scene scene, LoadSceneMode sceneMode)
+        {
+            _firstScene = scene;
+            SceneManager.sceneLoaded -= OnFirstSceneReady;
+
+            Mod.Loader.ModsRan += LateRunFirstSceneReady;
+            Logger.Info(() => "First Scene Loaded! Executing OnFirstSceneReady hooks on UnityMonkeys!");
+
+            RunFirstSceneReadyHooks(Mod.Loader.Mods);
+        }
+
+        private void RunFirstSceneReadyHooks(IEnumerable<Mod> mods)
+        {
+            var unityMonkeys = mods
+                    .GetMonkeysAscending()
+                    .SelectCastable<IMonkey, IUnityMonkeyInternal>()
+                    .ToArray();
+
             Logger.Trace(() => "Running FirstSceneReady hooks in this order:");
             Logger.Trace(unityMonkeys.Select(uM => new Func<object>(() => $"{uM.Mod.Title}/{uM.Name}")));
 
-            SceneManager.sceneLoaded -= SceneManager_sceneLoaded;
             var sw = Stopwatch.StartNew();
 
             foreach (var unityMonkey in unityMonkeys)
-                unityMonkey.FirstSceneReady(scene);
+                unityMonkey.FirstSceneReady(_firstScene);
 
-            Info(() => $"Done executing OnFirstSceneReady hooks on UnityMonkeys in {sw.ElapsedMilliseconds}ms!");
+            Logger.Info(() => $"Done executing OnFirstSceneReady hooks on UnityMonkeys in {sw.ElapsedMilliseconds}ms!");
         }
     }
 }
