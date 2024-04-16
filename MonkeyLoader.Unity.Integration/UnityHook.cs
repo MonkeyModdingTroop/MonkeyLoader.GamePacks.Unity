@@ -11,9 +11,11 @@ using UnityEngine.SceneManagement;
 
 namespace MonkeyLoader.Unity
 {
-    internal sealed class UnityHooks : Monkey<UnityHooks>
+    internal sealed class UnityHook : Monkey<UnityHook>
     {
         private Scene _firstScene;
+
+        public override string Name => "Unity Hook";
 
         protected override IEnumerable<IFeaturePatch> GetFeaturePatches() => Enumerable.Empty<IFeaturePatch>();
 
