@@ -49,11 +49,11 @@ namespace MonkeyLoader.Unity
         {
             var unityMonkeys = mods
                     .GetMonkeysAscending()
-                    .SelectCastable<IMonkey, IUnityMonkeyInternal>()
+                    .OfType<IUnityMonkeyInternal>()
                     .ToArray();
 
             Logger.Trace(() => "Running FirstSceneReady hooks in this order:");
-            Logger.Trace(unityMonkeys.Select(uM => new Func<object>(() => $"{uM.Mod.Title}/{uM.Name}")));
+            Logger.Trace(unityMonkeys);
 
             var sw = Stopwatch.StartNew();
 
