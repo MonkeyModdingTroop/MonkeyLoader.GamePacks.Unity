@@ -61,6 +61,8 @@ namespace MonkeyLoader.Unity
                 unityMonkey.FirstSceneReady(_firstScene);
 
             Logger.Info(() => $"Done executing OnFirstSceneReady hooks on UnityMonkeys in {sw.ElapsedMilliseconds}ms!");
+
+            Mod.Loader.LogPotentialConflicts();
         }
     }
 }
