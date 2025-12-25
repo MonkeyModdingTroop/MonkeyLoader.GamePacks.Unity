@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>MonkeyLoader.GamePacks.Unity</id>
-    <version>0.7.0-beta</version>
+    <version>0.8.0</version>
     <title>Unity GamePack</title>
     <authors>Banane9</authors>
     <owners>Banane9</owners>
@@ -19,8 +19,8 @@
     <tags>mod mods modding mod loader harmony unity game games mono config configuration nuget logging monkeyloader</tags>
 
     <dependencies>
-      <group targetFramework=".NETFramework4.6.2">
-        <dependency id="MonkeyLoader" version="0.24.0-beta" />
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="MonkeyLoader" version="0.29.0" />
       </group>
     </dependencies>
   </metadata>
@@ -32,12 +32,12 @@
 
     <file
       src="bin\Release\net472\MonkeyLoader.Unity.Integration.dll"
-      target="lib\net462\MonkeyLoader.Unity.Integration.dll" />
+      target="lib\net472\MonkeyLoader.Unity.Integration.dll" />
     <file
       src="bin\Release\net472\MonkeyLoader.Unity.Integration.xml"
-      target="lib\net462\MonkeyLoader.Unity.Integration.xml" />
+      target="lib\net472\MonkeyLoader.Unity.Integration.xml" />
     <file
       src="bin\Release\net472\MonkeyLoader.Unity.Integration.pdb"
-      target="lib\net462\MonkeyLoader.Unity.Integration.pdb" />
+      target="lib\net472\MonkeyLoader.Unity.Integration.pdb" />
   </files>
 </package>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <Version>0.7.0-beta</Version>
+    <Version>0.8.0</Version>
     <AssemblyTitle>MonkeyLoader.Unity.Integration</AssemblyTitle>
     <AssemblyFileName>$(AssemblyTitle).dll</AssemblyFileName>
     <RootNamespace>MonkeyLoader.Unity</RootNamespace>
@@ -14,16 +14,16 @@
   </Target>
   
   <ItemGroup>
-    <PackageReference Include="MonkeyLoader" Version="0.24.0-beta" />
-    <PackageReference Include="PolySharp" Version="1.14.1">
+    <PackageReference Include="MonkeyLoader" Version="0.29.0" />
+    <PackageReference Include="PolySharp" Version="1.15.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <Reference Include="UnityEngine">
-      <HintPath>$(ResonitePath)/Resonite_Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>$(ResonitePath)Renderer/Renderite.Renderer_Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(ResonitePath)/Resonite_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(ResonitePath)Renderer/Renderite.Renderer_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 
